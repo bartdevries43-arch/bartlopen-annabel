@@ -1,15 +1,15 @@
 /* ================================================================== *
- *  Annabel — Run Coach · voorzichtig terug naar 5 km
+ *  Annabel, Run Coach · voorzichtig terug naar 5 km
  *  Knie-vriendelijk hardlopen–wandelen na operatie; op tijd & gevoel (RPE).
  *  Shell gelijk aan Kim (hoofdapp); alleen data + kleuren zijn van Annabel.
  * ================================================================== */
 
-/* ========== INSTELLINGEN PER HARDLOPER — pas dit blok aan ========== */
+/* ========== INSTELLINGEN PER HARDLOPER, pas dit blok aan ========== */
 const CONFIG = {
   unit:       "min",                       // op minuten (walk-run, geen tempojacht)
   zonePaceSuffix: "",                       // "" = op gevoel/RPE, geen /km tonen
   footEmoji:  "🏃‍♀️",
-  mottos: ["Stap voor stap terug, strijder!", "Lekker bezig, strijder!", "Je bouwt 'm rustig op, strijder.", "Halverwege — knap volgehouden! ⚡", "Bijna bij je 5 km, strijder!", "5 km uitgelopen! Wat een comeback, strijder! 🎉"],
+  mottos: ["Stap voor stap terug, strijder!", "Lekker bezig, strijder!", "Je bouwt 'm rustig op, strijder.", "Halverwege, knap volgehouden! ⚡", "Bijna bij je 5 km, strijder!", "5 km uitgelopen! Wat een comeback, strijder! 🎉"],
   appName:    "Op naar 5K",
   runner:     "Annabel",
   goal:       "5 km aaneengesloten uitlopen",
@@ -45,14 +45,14 @@ const zoneByKey = Object.fromEntries(ZONES.map((z) => [z.key, z]));
 /* --- Coach Bart (@bartlopen): warm, geduldig, knie-bewust ---------- */
 const COACH = {
   interval: [
-    "Hardlopen-wandelen vandaag, strijder. Stukje lopen, dan wandelen — precies goed voor je knie.",
+    "Hardlopen-wandelen vandaag, strijder. Stukje lopen, dan wandelen, precies goed voor je knie.",
     "Geen haast. De wandelpauzes zijn er om van te genieten én je knie te ontzien.",
     "Luister goed naar je knie. Voelt-ie prima? Dan lekker doorgaan, strijder.",
     "Stap voor stap terug. Knap dat je hier staat na alles, strijder.",
     "Kort en rustig is hier winst. Niets bewijzen vandaag.",
   ],
   duur: [
-    "Rustig aaneengesloten lopen, strijder. Praattempo — je moet nog kunnen kletsen.",
+    "Rustig aaneengesloten lopen, strijder. Praattempo, je moet nog kunnen kletsen.",
     "Niet te snel willen. Rustig is precies goed voor je opbouw.",
     "Mooi dat je dit alweer kunt. Geniet ervan, strijder.",
     "Adem rustig, schouders los, zachte pas. Jij doet dit gewoon.",
@@ -66,7 +66,7 @@ const COACH = {
   ],
   herstel: [
     "Losmaken en mobiliteit vandaag, strijder. Daar wordt je knie blij van.",
-    "Rustig wandelen en soepel bewegen — herstel hoort bij trainen.",
+    "Rustig wandelen en soepel bewegen, herstel hoort bij trainen.",
     "Houd het licht en kalm; morgen sta je er sterker.",
     "Slim dat je je knie ontziet, strijder. Zo bouw je verstandig terug.",
   ],
@@ -79,15 +79,15 @@ const coachLine = (zone) => {
 const DONE = [
   "💪 Sterk gedaan, strijder!",
   "✅ Weer een stap terug, strijder!",
-  "🙌 Mooi volgehouden — knie hield het? Top!",
+  "🙌 Mooi volgehouden, knie hield het? Top!",
   "🌟 Knap werk, strijder!",
   "💚 Rustig sterk, strijder!",
 ];
 
 /* --- Waarom deze training? ----------------------------------------- */
 const WHY = {
-  interval: "Door hardlopen en wandelen af te wisselen bouw je rustig conditie op zónder je knie te overbelasten. De wandelpauzes laten je herstellen, zodat je vaker kunt trainen en de kans op klachten klein blijft — precies wat je na je operatie nodig hebt.",
-  duur:     "Rustig aaneengesloten hardlopen op praattempo bouwt je basisconditie: sterker hart en benen die langer meegaan. Rustig is hier écht goed — je hoeft nog niet snel te kunnen, alleen ontspannen door.",
+  interval: "Door hardlopen en wandelen af te wisselen bouw je rustig conditie op zónder je knie te overbelasten. De wandelpauzes laten je herstellen, zodat je vaker kunt trainen en de kans op klachten klein blijft, precies wat je na je operatie nodig hebt.",
+  duur:     "Rustig aaneengesloten hardlopen op praattempo bouwt je basisconditie: sterker hart en benen die langer meegaan. Rustig is hier écht goed, je hoeft nog niet snel te kunnen, alleen ontspannen door.",
   lang:     "De langere loop van je week traint je uithoudingsvermogen én je hoofd: je leert dat je langer door kunt dan je denkt. Rustig tempo, knie in de gaten, gewoon volhouden richting je 5 km.",
   herstel:  "Wandelen, mobiliteit en heel rustig bewegen houden je los zonder nieuwe belasting. Juist op de rustmomenten word je sterker en krijgt je knie de kans te herstellen.",
 };
@@ -139,7 +139,7 @@ const PLAN = [
     d1({ zone: "duur", min: 37, title: "2× 12 min soepel", goal: "Benen fris houden", blocks: [
       "5 min inwandelen", "2× 12 min rustig hardlopen / 2 min wandelen", "4 min uitwandelen" ] }),
     d2({ zone: "lang", min: 31, title: "20 min aan één stuk", goal: "Eerste 20 minuten non-stop", blocks: [
-      "6 min inwandelen", "20 min rustig aaneengesloten hardlopen (praattempo!)", "Voelt het zwaar? Even wandelen mag — afmaken telt.", "5 min uitwandelen" ] }),
+      "6 min inwandelen", "20 min rustig aaneengesloten hardlopen (praattempo!)", "Voelt het zwaar? Even wandelen mag, afmaken telt.", "5 min uitwandelen" ] }),
   ]},
   { week: 8, dates: "24–30 aug", phase: "Fase 4 · Opbouw naar 5 km", recovery: true, sessions: [
     d1({ zone: "herstel", min: 20, title: "Rustige week · 15 min soepel", goal: "Knie ontlasten", kind: "Wandelen & mobiliteit", blocks: [
@@ -168,22 +168,22 @@ const PLAN = [
   { week: 12, dates: "21–27 sep", phase: "Fase 4 · Opbouw naar 5 km", finish: true, raceLabel: "🎉 5 km-finale", sessions: [
     d1({ zone: "duur", min: 29, title: "Soepel 18 min, benen fris", goal: "Klaarmaken voor je 5 km", blocks: [
       "6 min inwandelen", "18 min heel rustig", "3× 20 sec soepel versnellen", "4 min uitwandelen" ] }),
-    d2({ zone: "lang", min: 46, title: "🎉 5 km aan één stuk uitlopen", goal: "Je doel: 5 km non-stop — trots afsluiten", blocks: [
-      "6 min inwandelen", "5 km rustig aaneengesloten uitlopen (± 33–38 min, praattempo!)", "Voelt het zwaar? Even wandelen mag altijd — uitlopen telt.", "5 min uitwandelen. Chapeau, strijder! 🎉" ] }),
+    d2({ zone: "lang", min: 46, title: "🎉 5 km aan één stuk uitlopen", goal: "Je doel: 5 km non-stop, trots afsluiten", blocks: [
+      "6 min inwandelen", "5 km rustig aaneengesloten uitlopen (± 33–38 min, praattempo!)", "Voelt het zwaar? Even wandelen mag altijd, uitlopen telt.", "5 min uitwandelen. Chapeau, strijder! 🎉" ] }),
   ]},
 ];
 
 /* --- Extra advies (info-kaarten) ----------------------------------- */
 const INFO = [
   { icon: "🎯", title: "Het doel", items: [
-    "5 km aaneengesloten uitlopen — rustig, op gevoel, geen tijdsdruk.",
+    "5 km aaneengesloten uitlopen, rustig, op gevoel, geen tijdsdruk.",
     "Geen wedstrijd of datum: je hebt alle tijd, knie voorop.",
-    "Twee flexibele loopdagen per week — kies zelf welke, wisselend mag.",
+    "Twee flexibele loopdagen per week, kies zelf welke, wisselend mag.",
     "Rustig en blessurevrij wint. Stap voor stap terug." ] },
-  { icon: "🦵", title: "Je knie — voorzichtig opbouwen", items: [
+  { icon: "🦵", title: "Je knie, voorzichtig opbouwen", items: [
     "Scherpe pijn tijdens het lopen of mank lopen = stoppen. Zeurderig (≤ 3/10) mag.",
     "Dik of warm de dag erna? Volgende keer korter/rustiger, of extra rustdag.",
-    "Blijf je krachtoefeningen doen — dat beschermt je knie het meest.",
+    "Blijf je krachtoefeningen doen, dat beschermt je knie het meest.",
     "Loop bij voorkeur op zachte ondergrond (bospad, gravel), niet alleen hard asfalt.",
     "Na het lopen kort koelen (10 min ijs in een doek) kan de knie rust geven." ] },
   { icon: "💪", title: "Kracht blijven doen (juist nu!)", items: [
@@ -192,14 +192,14 @@ const INFO = [
     "Voelt de knie moe van kracht? Plan je loopje op een andere dag." ] },
   { icon: "🎾", title: "Naast tennis & skaten", items: [
     "Plan je hardloopje niet op een zware tenniswedstrijd-dag.",
-    "Alles telt als belasting — luister naar je totale week, niet alleen het lopen.",
+    "Alles telt als belasting, luister naar je totale week, niet alleen het lopen.",
     "Twee rustige loopjes zijn genoeg; overdrijf niet in een drukke week." ] },
   { icon: "🔥", title: "Warming-up & afkoelen", items: [
     "Begin elke training met stevig inwandelen (5–6 min).",
-    "Eindig met uitwandelen — niet abrupt stoppen.",
+    "Eindig met uitwandelen, niet abrupt stoppen.",
     "Kort wat mobiliteit voor kuiten, quadriceps en heupen." ] },
   { icon: "😴", title: "Rust, geduld & vertrouwen", items: [
-    "Terugkomen na een operatie kost tijd — een mindere dag is normaal, strijder.",
+    "Terugkomen na een operatie kost tijd, een mindere dag is normaal, strijder.",
     "Slaap is je beste herstelmiddel.",
     "Vergelijk je niet met vroeger; vergelijk je met vorige week." ] },
 ];
@@ -359,7 +359,7 @@ function renderHero(stats) {
   fg.style.strokeDasharray = c;
   fg.style.strokeDashoffset = c;
   requestAnimationFrame(() => { fg.style.strokeDashoffset = c * (1 - pct / 100); });
-  const mottos = CONFIG.mottos || ["Zet 'm op, strijder!", "Lekker bezig, strijder!", "Je bouwt 'm rustig op, strijder.", "Halverwege — knap volgehouden! ⚡", "Bijna race-klaar, strijder!", "Finisher! Wat een prestatie, strijder. 🏅"];
+  const mottos = CONFIG.mottos || ["Zet 'm op, strijder!", "Lekker bezig, strijder!", "Je bouwt 'm rustig op, strijder.", "Halverwege, knap volgehouden! ⚡", "Bijna race-klaar, strijder!", "Finisher! Wat een prestatie, strijder. 🏅"];
   $("heroMotto").textContent =
     stats.raceDone ? mottos[5] : pct >= 80 ? mottos[4] : pct >= 50 ? mottos[3] : pct >= 20 ? mottos[2] : pct > 0 ? mottos[1] : mottos[0];
   renderCountdown();
@@ -386,12 +386,12 @@ function renderCountdown() {
   const { days, name } = raceInfo();
   const wks = Math.round(days / 7), mon = Math.round(days / 30);
   el.textContent =
-    days > 180 ? `🗓️ jouw grote doel: over ~${mon} maanden — ${name}` :
+    days > 180 ? `🗓️ jouw grote doel: over ~${mon} maanden · ${name}` :
     days > 14 ? `🗓️ nog ${wks} weken tot je ${name}` :
     days > 1 ? `🗓️ nog ${days} dagen tot je ${name}` :
     days === 1 ? `🗓️ morgen is het zover: ${name}!` :
     days === 0 ? `🔥 vandaag is het zover: ${name}!` :
-    `🎉 ${name} volbracht — chapeau!`;
+    `🎉 ${name} volbracht, chapeau!`;
 }
 
 function renderStats(stats) {
@@ -411,7 +411,7 @@ function renderNextUp() {
     flatSessions.find((s) => !log[sid(s.week, s.day)]?.done);
   const box = $("nextUp");
   if (!next) {
-    box.innerHTML = `<div class="nextup-card done"><span class="nextup-eyebrow">🏅 Schema compleet</span><strong>Alles afgevinkt — chapeau, ${RUNNER}!</strong></div>`;
+    box.innerHTML = `<div class="nextup-card done"><span class="nextup-eyebrow">🏅 Schema compleet</span><strong>Alles afgevinkt, chapeau, ${RUNNER}!</strong></div>`;
     return;
   }
   const z = zoneByKey[next.zone];
@@ -634,10 +634,10 @@ function renderRecords(stats) {
   }
   const pace = fmtPace(stats.bestPace);
   const longest = UNIT === "min"
-    ? (stats.maxTime ? `${Math.round(stats.maxTime / 60)} min` : "—")
-    : (stats.maxDist ? `${stats.maxDist} km` : "—");
+    ? (stats.maxTime ? `${Math.round(stats.maxTime / 60)} min` : "–")
+    : (stats.maxDist ? `${stats.maxDist} km` : "–");
   const rows = [
-    ["⚡ Snelste tempo", pace || "—"],
+    ["⚡ Snelste tempo", pace || "–"],
     [UNIT === "min" ? "⏱️ Langste loop" : "🏔️ Verste loop", longest],
     ["📊 Totaal gelopen", `${Math.round(stats.km * 10) / 10} km`],
     ["🔥 Langste reeks", String(stats.streak)],
@@ -788,7 +788,7 @@ function openDetail(week, day) {
           </span>
         </label>
         <label class="full">Gemiddeld tempo
-          <output id="fPace" class="pace-out">${fmtPace(paceSeconds(e.distance, e.time)) || "—"}</output>
+          <output id="fPace" class="pace-out">${fmtPace(paceSeconds(e.distance, e.time)) || "–"}</output>
         </label>
         <label>Hartslag (bpm)
           <input id="fHr" type="number" inputmode="numeric" placeholder="bv. 152" value="${escapeHtml(e.hr ?? "")}">
@@ -814,7 +814,7 @@ function openDetail(week, day) {
     if (!$("fTimeMinutes").value && !$("fTimeSeconds").value) return "";
     return durationValue($("fTimeMinutes").value, $("fTimeSeconds").value);
   };
-  const recalc = () => ($("fPace").textContent = fmtPace(paceSeconds($("fDistance").value, readTime())) || "—");
+  const recalc = () => ($("fPace").textContent = fmtPace(paceSeconds($("fDistance").value, readTime())) || "–");
   $("fDistance").addEventListener("input", recalc);
   $("fTimeMinutes").addEventListener("input", recalc);
   $("fTimeSeconds").addEventListener("input", () => {
@@ -842,7 +842,7 @@ function openDetail(week, day) {
     log[id] = cur; saveLog();
     if (cur.done) {
       celebrate();
-      toast(w.finish ? "🎉 5 km uitgelopen — wat een comeback, strijder!" : w.race ? "🏅 Finisher! Wat een prestatie, strijder!" : w.tuneup ? "🏁 Wedstrijd voltooid — sterk gepacet!" : DONE[Math.floor(Math.random() * DONE.length)]);
+      toast(w.finish ? "🎉 5 km uitgelopen, wat een comeback, strijder!" : w.race ? "🏅 Finisher! Wat een prestatie, strijder!" : w.tuneup ? "🏁 Wedstrijd voltooid, sterk gepacet!" : DONE[Math.floor(Math.random() * DONE.length)]);
     }
     closeDetail();
   });
@@ -928,7 +928,7 @@ function celebrate() {
  *  Init
  * ================================================================== */
 /* Branding uit CONFIG zetten (zodat templaten makkelijk is) */
-document.title = `${CONFIG.appName} — ${CONFIG.coachHandle}`;
+document.title = `${CONFIG.appName} · ${CONFIG.coachHandle}`;
 if ($("appName")) $("appName").textContent = CONFIG.appName;
 if ($("brandHandle")) $("brandHandle").textContent = CONFIG.coachHandle;
 if ($("footCredit")) {
@@ -1076,7 +1076,7 @@ $("importFile").addEventListener("change", (e) => {
       if (!incoming || typeof incoming !== "object") throw new Error("ongeldig");
       log = { ...log, ...incoming };
       saveLog(); renderAll();
-      toast("Back-up geladen ⬆︎ — welkom terug!");
+      toast("Back-up geladen ⬆︎, welkom terug!");
     } catch {
       toast("Kon dit bestand niet lezen");
     }
