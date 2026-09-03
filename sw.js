@@ -1,7 +1,7 @@
 /* Eenvoudige offline-cache voor Run Coach. Verhoog CACHE bij elke update. */
-const CACHE = "runcoach-annabel-v4-feedback-p2-u2-m2";
+const CACHE = "runcoach-annabel-v4-feedback-p2-u2-m2-bugfix";
 const ASSETS = [
-  "./", "./index.html", "./styles.css?v=5-annabel-feedback-p2-u2-m2", "./app.js?v=5-annabel-feedback-p2-u2-m2",
+  "./", "./index.html", "./styles.css?v=5-annabel-feedback-p2-u2-m2-bugfix", "./app.js?v=5-annabel-feedback-p2-u2-m2-bugfix",
   "./coach.jpg", "./coach-logo.png", "./bartlopen-runcoach.png",
   "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png", "./manifest.json",
 ];
