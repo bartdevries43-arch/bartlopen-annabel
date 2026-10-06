@@ -9,10 +9,10 @@ const CONFIG = {
   unit:       "min",                       // op minuten (walk-run, geen tempojacht)
   zonePaceSuffix: "",                       // "" = op gevoel/RPE, geen /km tonen
   footEmoji:  "🏃‍♀️",
-  mottos: ["Stap voor stap terug, strijder!", "Lekker bezig, strijder!", "Je bouwt 'm rustig op, strijder.", "Halverwege, knap volgehouden! ⚡", "Bijna bij je 5 km, strijder!", "5 km uitgelopen! Wat een comeback, strijder! 🎉"],
-  appName:    "Op naar 5K",
+  mottos: ["Stap voor stap terug, strijder!", "Lekker bezig, strijder!", "Je bouwt 'm rustig op, strijder.", "Halverwege, knap volgehouden! ⚡", "Bijna bij je 8 km, strijder!", "8 km uitgelopen! Wat een comeback, strijder! 🎉"],
+  appName:    "Op naar 8K",
   runner:     "Annabel",
-  goal:       "5 km aaneengesloten uitlopen",
+  goal:       "8 km aaneengesloten uitlopen",
   startDate:  new Date(2026, 6, 6),         // maandag van week 1 (maand 0-based: 6 = juli)
   storeKey:   "annabel5k.log.v1",
   coachName:  "Coach Bart",
@@ -39,6 +39,7 @@ const ZONES = [
   { key: "herstel",  name: "Wandelen & mobiliteit", pace: "heel rustig", info: "RPE 1-2 · losmaken, knie soepel houden" },
   { key: "interval", name: "Hardlopen en wandelen", pace: "afwisselen", info: "RPE 3-4 in de loopjes · praten kan makkelijk" },
   { key: "duur",     name: "Rustig hardlopen",      pace: "praattempo",  info: "RPE 3-4 · aaneengesloten en ontspannen" },
+  { key: "tempo",    name: "Vlottere stukken",   pace: "iets vlotter",  info: "RPE 5-6 · nog net kunnen praten" },
   { key: "lang",     name: "Langere duurloop",      pace: "rustig",      info: "RPE 4 · de opbouw naar 5 km" },
 ];
 const zoneByKey = Object.fromEntries(ZONES.map((z) => [z.key, z]));
@@ -90,6 +91,7 @@ const WHY = {
   interval: "Door hardlopen en wandelen af te wisselen bouw je rustig conditie op zónder je knie te overbelasten. De wandelpauzes laten je herstellen, zodat je vaker kunt trainen en de kans op klachten klein blijft, precies wat je na je operatie nodig hebt.",
   duur:     "Rustig aaneengesloten hardlopen op praattempo bouwt je basisconditie: sterker hart en benen die langer meegaan. Rustig is hier écht goed, je hoeft nog niet snel te kunnen, alleen ontspannen door.",
   lang:     "De langere loop van je week traint je uithoudingsvermogen én je hoofd: je leert dat je langer door kunt dan je denkt. Rustig tempo, knie in de gaten, gewoon volhouden richting je 5 km.",
+  tempo:    "Korte vlottere stukken in een rustige loop maken je benen wakker en je looppas lichter, zonder dat je knie een zware training krijgt. Vlotter betekent hier: je kunt nog net praten, dus geen sprint.",
   herstel:  "Wandelen, mobiliteit en heel rustig bewegen houden je los zonder nieuwe belasting. Juist op de rustmomenten word je sterker en krijgt je knie de kans te herstellen.",
 };
 
@@ -183,13 +185,96 @@ const PLAN = [
     d2({ zone: "lang", min: 46, title: "🎉 5 km aan één stuk uitlopen", goal: "Je doel: 5 km non-stop, trots afsluiten", blocks: [
       "6 min inwandelen", "5 km rustig aaneengesloten uitlopen (± 33–38 min, praattempo!)", "Voelt het zwaar? Even wandelen mag altijd, uitlopen telt.", "5 min uitwandelen. Chapeau, strijder! 🎉" ] }),
   ]},
+  { week: 13, dates: "28 sep–4 okt", phase: "Fase 5 · Tussenweken", recovery: true, sessions: [
+    d1({ zone: "duur", min: 30, title: "30 min rustig", goal: "Bijblijven na je 5 km-finale", blocks: [
+      "5 min inwandelen", "20 min rustig hardlopen op praattempo", "5 min uitwandelen",
+      "Dit was de week ná je finale. Niet gelopen? Helemaal niet erg, begin dan gewoon bij week 15." ] }),
+    d2({ zone: "lang", min: 44, title: "5 km rustig", goal: "Je 5 km blijft gewoon staan", blocks: [
+      "5 min inwandelen", "5 km rustig aaneengesloten (± 32–36 min)", "5 min uitwandelen" ] }),
+  ]},
+  { week: 14, dates: "5–11 okt", phase: "Fase 5 · Tussenweken", recovery: true, sessions: [
+    d1({ zone: "duur", min: 32, title: "32 min rustig", goal: "Ritme terugpakken", blocks: [
+      "5 min inwandelen", "22 min rustig hardlopen", "5 min uitwandelen" ] }),
+    d2({ zone: "lang", min: 44, title: "5 km rustig", goal: "Rustig, knie voorop", blocks: [
+      "5 min inwandelen", "5 km rustig aaneengesloten", "5 min uitwandelen",
+      "Vanaf volgende week zetten we je 5 km stevig vast en bouwen we rustig uit." ] }),
+  ]},
+  { week: 15, dates: "12–18 okt", phase: "Fase 6 · 5 km stevig vastzetten", sessions: [
+    d1({ zone: "tempo", min: 34, title: "Rustig met 2× 6 min vlotter", goal: "Benen wakker maken", blocks: [
+      "5 min inwandelen", "6 min rustig", "2× 6 min iets vlotter, met 3 min rustig joggen ertussen", "4 min rustig uitlopen", "5 min uitwandelen",
+      "Vlotter betekent: je kunt nog net praten. Geen sprint." ] }),
+    d2({ zone: "lang", min: 48, title: "5,5 km rustig", goal: "Een half kilometertje erbij", blocks: [
+      "5 min inwandelen", "5,5 km rustig aaneengesloten", "5 min uitwandelen",
+      "Zeurt je knie? Inkorten of even wandelen, dat is slim en niet zwak." ] }),
+  ]},
+  { week: 16, dates: "19–25 okt", phase: "Fase 6 · 5 km stevig vastzetten", sessions: [
+    d1({ zone: "duur", min: 35, title: "25 min aaneengesloten", goal: "Rustige basis", blocks: [
+      "5 min inwandelen", "25 min rustig hardlopen op praattempo", "5 min uitwandelen" ] }),
+    d2({ zone: "lang", min: 50, title: "6 km rustig", goal: "Je eerste 6 km", blocks: [
+      "5 min inwandelen", "6 km rustig aaneengesloten", "5 min uitwandelen",
+      "Nieuwe langste afstand sinds je operatie. Rustig starten, dan komt het eind van zelf." ] }),
+  ]},
+  { week: 17, dates: "26 okt–1 nov", phase: "Fase 6 · 5 km stevig vastzetten", recovery: true, sessions: [
+    d1({ zone: "herstel", min: 28, title: "Wandelen en mobiliteit", goal: "Rustweek, je knie tankt bij", blocks: [
+      "20 min stevig wandelen", "8 min mobiliteit: kuiten, hamstrings, heupen, bilspieren",
+      "Deze week bewust lichter. Juist nu word je sterker." ] }),
+    d2({ zone: "duur", min: 38, title: "4 km soepel", goal: "Kort en ontspannen", blocks: [
+      "5 min inwandelen", "4 km heel rustig", "5 min uitwandelen" ] }),
+  ]},
+  { week: 18, dates: "2–8 nov", phase: "Fase 7 · Naar 6 en 7 km", sessions: [
+    d1({ zone: "tempo", min: 36, title: "Rustig met 3× 6 min vlotter", goal: "Lichtere looppas", blocks: [
+      "5 min inwandelen", "5 min rustig", "3× 6 min iets vlotter, met 2 min rustig joggen ertussen", "5 min uitwandelen" ] }),
+    d2({ zone: "lang", min: 53, title: "6,5 km rustig", goal: "Rustig uitbouwen", blocks: [
+      "5 min inwandelen", "6,5 km rustig aaneengesloten", "5 min uitwandelen",
+      "Neem wat te drinken mee, je bent ruim drie kwartier onderweg." ] }),
+  ]},
+  { week: 19, dates: "9–15 nov", phase: "Fase 7 · Naar 6 en 7 km", sessions: [
+    d1({ zone: "duur", min: 37, title: "27 min aaneengesloten", goal: "Rustige basis", blocks: [
+      "5 min inwandelen", "27 min rustig hardlopen", "5 min uitwandelen" ] }),
+    d2({ zone: "lang", min: 56, title: "7 km rustig", goal: "Zeven kilometer, knap", blocks: [
+      "5 min inwandelen", "7 km rustig aaneengesloten", "5 min uitwandelen" ] }),
+  ]},
+  { week: 20, dates: "16–22 nov", phase: "Fase 7 · Naar 6 en 7 km", recovery: true, sessions: [
+    d1({ zone: "herstel", min: 30, title: "Wandelen en mobiliteit", goal: "Rustweek", blocks: [
+      "22 min stevig wandelen", "8 min mobiliteit" ] }),
+    d2({ zone: "duur", min: 42, title: "4,5 km soepel", goal: "Licht blijven bewegen", blocks: [
+      "5 min inwandelen", "4,5 km heel rustig", "5 min uitwandelen" ] }),
+  ]},
+  { week: 21, dates: "23–29 nov", phase: "Fase 8 · Op naar 8 km", sessions: [
+    d1({ zone: "tempo", min: 38, title: "Rustig met 4× 5 min vlotter", goal: "Scherpte zonder zwaarte", blocks: [
+      "5 min inwandelen", "5 min rustig", "4× 5 min iets vlotter, met 2 min rustig joggen ertussen", "5 min uitwandelen" ] }),
+    d2({ zone: "lang", min: 59, title: "7,5 km rustig", goal: "Bijna bij je doel", blocks: [
+      "5 min inwandelen", "7,5 km rustig aaneengesloten", "5 min uitwandelen" ] }),
+  ]},
+  { week: 22, dates: "30 nov–6 dec", phase: "Fase 8 · Op naar 8 km", sessions: [
+    d1({ zone: "duur", min: 38, title: "28 min aaneengesloten", goal: "Rustige basis", blocks: [
+      "5 min inwandelen", "28 min rustig hardlopen", "5 min uitwandelen" ] }),
+    d2({ zone: "lang", min: 62, title: "8 km rustig", goal: "Je eerste 8 km, rustig uitlopen", why: "Vandaag loop je de afstand van je finale een keer rustig uit. Niet op tempo, gewoon om te weten dat 8 km kan. In week 24 doe je het nog een keer, dan als jouw moment.", blocks: [
+      "5 min inwandelen", "8 km rustig aaneengesloten, echt op praattempo", "5 min uitwandelen",
+      "Voelt het zwaar? Even wandelen mag altijd, uitlopen telt." ] }),
+  ]},
+  { week: 23, dates: "7–13 dec", phase: "Fase 8 · Op naar 8 km", recovery: true, sessions: [
+    d1({ zone: "duur", min: 34, title: "24 min soepel", goal: "Lichter, richting je finale", blocks: [
+      "5 min inwandelen", "24 min rustig, laatste 3 min iets vlotter", "5 min uitwandelen" ] }),
+    d2({ zone: "lang", min: 46, title: "5 km rustig", goal: "Benen fris houden", blocks: [
+      "5 min inwandelen", "5 km rustig", "5 min uitwandelen",
+      "Volgende week je 8 km-finale, dus deze week bewust korter." ] }),
+  ]},
+  { week: 24, dates: "14–20 dec", phase: "Fase 9 · Je 8 km-finale", finish: true, raceLabel: "🎉 8 km-finale", raceSub: "8 km aan één stuk · jouw finale", sessions: [
+    d1({ zone: "duur", min: 30, title: "Soepel 20 min, benen fris", goal: "Klaarmaken voor je 8 km", blocks: [
+      "5 min inwandelen", "20 min heel rustig met 3× 20 sec soepel versnellen", "5 min uitwandelen" ] }),
+    d2({ zone: "lang", min: 64, title: "🎉 8 km aan één stuk uitlopen", goal: "Jouw finale: 8 km non-stop", why: "Na je operatie begon je met blokjes van één minuut. Nu loop je acht kilometer aan één stuk. Geen tijd, geen druk, alleen jij die doorloopt. Start rustiger dan je wil en geniet van het laatste stuk, dat heb je dubbel verdiend.", blocks: [
+      "5 min inwandelen", "8 km rustig aaneengesloten uitlopen (± 50–56 min)", "Voelt het zwaar? Even wandelen mag altijd, uitlopen telt.",
+      "5 min uitwandelen. Chapeau, strijder! 🎉" ] }),
+  ]},
 ];
 
 /* --- Extra advies (info-kaarten) ----------------------------------- */
 const INFO = [
   { icon: "🎯", title: "Het doel", items: [
-    "5 km aaneengesloten uitlopen, rustig, op gevoel, geen tijdsdruk.",
-    "Geen wedstrijd of datum: je hebt alle tijd, knie voorop.",
+    "Je 5 km staat. Nieuwe doel: 8 km aaneengesloten uitlopen, rustig, op gevoel, geen tijdsdruk.",
+    "Geen wedstrijd of datum: je finale is in de week van 14 december, en schuift gewoon mee als dat beter past.",
+    "We bouwen per week een halve tot een hele kilometer op, met elke derde week een lichte week voor je knie.",
     "Twee flexibele loopdagen per week zijn de basis; kies zelf welke dagen, wisselen mag.",
     "Gaat het meerdere weken goed en blijft je knie rustig? Dan mag je optioneel een derde, makkelijke training herhalen. Houd minstens 48 uur tussen twee looptrainingen.",
     "Rustig en blessurevrij wint. Stap voor stap terug." ] },
@@ -231,23 +316,112 @@ const BADGES = [
   { id: "half",   icon: "⚡",   name: "Halverwege",       desc: "50% van het schema",       test: (s) => s.done >= s.total / 2 },
   { id: "twenty", icon: "🏃‍♀️", name: "Twintig non-stop", desc: "20 min aaneengesloten",    test: (s) => s.maxTime >= 20 * 60 },
   { id: "loyal",  icon: "📅",   name: "Vaste klant",      desc: "10 trainingen gedaan",     test: (s) => s.done >= 10 },
-  { id: "finish", icon: "🎉",   name: "5 km uitgelopen",  desc: "De 5 km-finale voltooid",  test: (s) => s.raceDone },
+  { id: "vijf",   icon: "🎉",   name: "5 km uitgelopen",  desc: "De 5 km-finale voltooid",  test: (s) => s.vijfDone },
+  { id: "zes",    icon: "6️⃣",  name: "Zes kilometer",    desc: "6 km aan één stuk",        test: (s) => s.zesDone },
+  { id: "zeven",  icon: "7️⃣",  name: "Zeven kilometer",  desc: "7 km aan één stuk",        test: (s) => s.zevenDone },
+  { id: "finish", icon: "🏔️", name: "8 km uitgelopen",  desc: "Je 8 km-finale voltooid",  test: (s) => s.achtDone },
 ];
 
 /* ================================================================== *
  *  State
  * ================================================================== */
-function loadLog() {
-  try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
-  catch { return {}; }
+const LEGACY_KEYS = CONFIG.legacyKeys || [];
+
+function leesSleutel(k) {
+  try { const v = JSON.parse(localStorage.getItem(k)); return v && typeof v === "object" ? v : null; }
+  catch { return null; }
 }
-function saveLog() { localStorage.setItem(STORE_KEY, JSON.stringify(log)); }
+function aantalSessies(o) { return o ? Object.keys(o).filter((k) => /^w\d+-/.test(k)).length : 0; }
+function samenvoegen(hoofd, extra) { return { ...extra, ...hoofd }; }
+
+function loadLog() {
+  let uit = leesSleutel(STORE_KEY) || {};
+  const eigen = aantalSessies(uit);
+  LEGACY_KEYS.forEach((k) => {
+    const oud = leesSleutel(k);
+    if (aantalSessies(oud)) uit = samenvoegen(uit, oud);
+  });
+  if (aantalSessies(uit) > eigen) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(uit)); } catch {}
+  }
+  return uit;
+}
+function saveLog() {
+  log.__saved = Date.now();
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(log)); } catch {}
+  idbZet(log);
+  renderLaatstOpgeslagen();
+}
+
+/* ----- Tweede back-up in IndexedDB ---------------------------------- *
+ *  localStorage kan door de browser worden opgeruimd. Elke opslag gaat
+ *  daarom ook naar IndexedDB; bij opstarten halen we terug wat vollediger is.
+ * -------------------------------------------------------------------- */
+const IDB_NAAM = "bartlopen-runcoach", IDB_STORE = "logs";
+function idbOpen() {
+  return new Promise((ok, nee) => {
+    if (!window.indexedDB) return nee(new Error("geen indexedDB"));
+    const r = indexedDB.open(IDB_NAAM, 1);
+    r.onupgradeneeded = () => {
+      if (!r.result.objectStoreNames.contains(IDB_STORE)) r.result.createObjectStore(IDB_STORE);
+    };
+    r.onsuccess = () => ok(r.result);
+    r.onerror = () => nee(r.error);
+  });
+}
+async function idbZet(data) {
+  try {
+    const db = await idbOpen();
+    await new Promise((ok, nee) => {
+      const t = db.transaction(IDB_STORE, "readwrite");
+      t.objectStore(IDB_STORE).put(JSON.parse(JSON.stringify(data)), STORE_KEY);
+      t.oncomplete = ok; t.onerror = () => nee(t.error);
+    });
+  } catch {}
+}
+async function idbHaal() {
+  try {
+    const db = await idbOpen();
+    return await new Promise((ok, nee) => {
+      const t = db.transaction(IDB_STORE, "readonly");
+      const q = t.objectStore(IDB_STORE).get(STORE_KEY);
+      q.onsuccess = () => ok(q.result || null);
+      q.onerror = () => nee(q.error);
+    });
+  } catch { return null; }
+}
+function herstelUitBackup() {
+  return idbHaal().then((kopie) => {
+    if (!kopie) { idbZet(log); return false; }
+    if (aantalSessies(kopie) > aantalSessies(log)) {
+      log = samenvoegen(log, kopie);
+      saveLog(); renderAll();
+      toast("Je voortgang is teruggehaald 🔄");
+      return true;
+    }
+    idbZet(log);
+    return false;
+  }).catch(() => false);
+}
+function renderLaatstOpgeslagen() {
+  const el = document.getElementById("lastSaved");
+  if (!el) return;
+  const t = log.__saved;
+  if (!t) { el.textContent = ""; return; }
+  const d = new Date(t), pad = (n) => String(n).padStart(2, "0");
+  el.textContent = `Laatst opgeslagen: ${d.getDate()}-${pad(d.getMonth() + 1)} om ${pad(d.getHours())}:${pad(d.getMinutes())} · ${aantalSessies(log)} trainingen ingevuld`;
+}
 let log = loadLog();
 
 const sid = (week, day) => `w${week}-${day}`;
 const flatSessions = PLAN.flatMap((w) => w.sessions.map((s) => ({ ...s, week: w.week })));
 const totalSessions = flatSessions.length;
 const LAST_SESSION = flatSessions[flatSessions.length - 1];
+/* Vaste ankers, zodat behaalde badges niet verschuiven als er weken bijkomen. */
+const VIJF_SESSION = { week: 12, day: "d2" };  /* 5 km-finale, 27 sep */
+const ZES_SESSION = { week: 16, day: "d2" };   /* eerste 6 km */
+const ZEVEN_SESSION = { week: 19, day: "d2" }; /* eerste 7 km */
+const ACHT_SESSION = { week: 24, day: "d2" };  /* 8 km-finale, 20 dec */
 const DAY_OFFSET = { ma: 0, di: 1, wo: 2, do: 3, vr: 4, za: 5, zo: 6, d1: 0, d2: 2, d3: 4, d4: 6 };
 
 const escapeHtml = (value = "") => String(value)
@@ -343,7 +517,10 @@ function computeStats() {
   PLAN.forEach((w) => {
     if (w.sessions.every((s) => log[sid(w.week, s.day)]?.done)) fullWeeks++;
   });
-  return { done, total: totalSessions, km, maxDist, maxTime, bestPace, secs, raceDone, streak, fullWeeks };
+  const klaar = (a) => !!log[sid(a.week, a.day)]?.done;
+  const vijfDone = klaar(VIJF_SESSION), zesDone = klaar(ZES_SESSION);
+  const zevenDone = klaar(ZEVEN_SESSION), achtDone = klaar(ACHT_SESSION);
+  return { done, total: totalSessions, km, maxDist, maxTime, bestPace, secs, raceDone, vijfDone, zesDone, zevenDone, achtDone, streak, fullWeeks };
 }
 
 function currentWeek() {
@@ -384,15 +561,30 @@ function renderHero(stats) {
   renderCountdown();
 }
 
-function raceInfo() {
-  const rw = PLAN.find((w) => w.race || w.finish) || PLAN.find((w) => w.tuneup) ||
-    PLAN[PLAN.length - 1];
+function raceTarget() {
+  /* Het eerstvolgende doel dat nog moet komen. Gelopen = datum voorbij óf afgevinkt. */
+  const vandaag = new Date().setHours(0, 0, 0, 0);
+  const datumVan = (w) => {
+    const d = w.sessions[w.sessions.length - 1].day;
+    return dateAtDay((w.week - 1) * 7 + (DAY_OFFSET[d] ?? 6)).setHours(0, 0, 0, 0);
+  };
+  const doelen = PLAN.filter((w) => w.race || w.finish || w.tuneup);
+  const gelopen = (w) => {
+    const d = w.sessions[w.sessions.length - 1].day;
+    return datumVan(w) < vandaag || !!log[sid(w.week, d)]?.done;
+  };
+  const volgende = doelen.find((w) => !gelopen(w));
+  const rw = volgende || doelen[doelen.length - 1] || PLAN[PLAN.length - 1];
   const rs = rw.sessions[rw.sessions.length - 1];
-  const off = DAY_OFFSET[rs.day] ?? 6;
-  const date = dateAtDay((rw.week - 1) * 7 + off); /* via dateAtDay: zomertijd-veilig */
-  const days = Math.round((date.setHours(0, 0, 0, 0) - new Date().setHours(0, 0, 0, 0)) / 864e5);
-  return { days, name: rs.title.replace(/^[^\p{L}\d]+/u, "").trim() };
+  return { rw, rs, date: new Date(datumVan(rw)), allesGelopen: !volgende };
 }
+
+function raceInfo() {
+  const { rs, date, allesGelopen } = raceTarget();
+  const days = Math.round((new Date(date).setHours(0, 0, 0, 0) - new Date().setHours(0, 0, 0, 0)) / 864e5);
+  return { days: allesGelopen ? -1 : days, name: rs.title.replace(/^[^\p{L}\d]+/u, "").trim() };
+}
+
 function renderCountdown() {
   const motto = $("heroMotto");
   if (!motto) return;
@@ -1154,6 +1346,8 @@ $("pdfBtn").addEventListener("click", () => {
 
 /* Alles tekenen */
 renderAll();
+renderLaatstOpgeslagen();
+herstelUitBackup();
 /* Na de intro-animatie geen her-fade meer; failsafe die alles zeker toont */
 setTimeout(() => { initialRevealDone = true; }, 900);
 setTimeout(() => document.querySelectorAll(".reveal:not(.in)").forEach((el) => el.classList.add("in")), 1600);
