@@ -27,7 +27,7 @@ const RUNNER = CONFIG.runner;
 const GOAL = CONFIG.goal;
 const START_DATE = CONFIG.startDate;
 const STORE_KEY = CONFIG.storeKey;
-const TOTAL_WEEKS = 12;
+const TOTAL_WEEKS = 24;
 const UNIT = CONFIG.unit === "min" ? "min" : "km";
 const UNIT_LABEL = UNIT;
 const nlNum = (v) => String(v).replace(".", ",");
@@ -525,7 +525,9 @@ function computeStats() {
 
 function currentWeek() {
   const diff = Math.floor((Date.now() - schedStartMs()) / (7 * 864e5));
-  return Math.min(TOTAL_WEEKS, Math.max(1, diff + 1));
+  /* Uit PLAN afleiden, niet uit TOTAL_WEEKS: anders blijft de huidige week
+     hangen op de oude laatste week zodra er weken bijkomen. */
+  return Math.min(PLAN[PLAN.length - 1].week, Math.max(1, diff + 1));
 }
 
 /* ================================================================== *
