@@ -46,6 +46,12 @@ const zoneByKey = Object.fromEntries(ZONES.map((z) => [z.key, z]));
 
 /* --- Coach Bart (@bartlopen): warm, geduldig, knie-bewust ---------- */
 const COACH = {
+  tempo: [
+    "Iets vlotter, strijder, maar je kunt nog net praten.",
+    "Vlotter is geen sprint. Je knie bepaalt het tempo.",
+    "Tussen de blokjes echt rustig joggen, dat hoort erbij.",
+    "Zo wordt je looppas lichter, zonder zware training.",
+  ],
   interval: [
     "Hardlopen-wandelen vandaag, strijder. Stukje lopen, dan wandelen, precies goed voor je knie.",
     "Geen haast. De wandelpauzes zijn er om van te genieten én je knie te ontzien.",
